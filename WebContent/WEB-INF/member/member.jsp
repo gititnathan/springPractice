@@ -25,12 +25,12 @@
 
 
 	<c:if test = "${param.name == null }">
-	<c:redirect url="index.member"/>
+	<c:redirect url="member_main.do"/>
 	</c:if>
 		
 	
 	<body onload="f.name.focus()">
-		<form name="f" method="POST" action="insertOk.member">
+		<form name="f" method="POST" action="joinOk_member.do">
 			<table width="550" align="center" class="outline">
   				<tr>
 					<td colspan="2" align=center class="m2">회원가입</td>

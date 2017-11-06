@@ -12,7 +12,7 @@
 		<hr color="green" width="300">
 		<table border="1" width="600" height="400">
 			<tr height="50">
-				<th><a href="join_member.do">회원가입</a></th>
+				<th><a href="check_member.do">회원가입</a></th>
 				<th><a href="list_member.do">회원보기</a></th>
 				<th><a href="find_member.do">회원찾기</a></th>
 				<th><a href="index_member.do">처음으로</a></th>

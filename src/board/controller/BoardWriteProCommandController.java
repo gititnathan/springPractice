@@ -11,15 +11,13 @@ import board.dao.BoardDAO;
 import board.dto.BoardDBBean;
 
 public class BoardWriteProCommandController extends AbstractCommandController {
-
-	private BoardDAO boardDAO;
+private BoardDAO boardDAO;
 	
 	public void setBoardDAO(BoardDAO boardDAO) {
 		this.boardDAO = boardDAO;
 	}
 	@Override
-	protected ModelAndView handle(HttpServletRequest arg0,
-			HttpServletResponse arg1, Object arg2, BindException arg3)
+	protected ModelAndView handle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, BindException arg3)
 			throws Exception {
 		BoardDBBean dto = (BoardDBBean)arg2;
 		System.out.println("dto.getNum = " + dto.getNum());
@@ -28,6 +26,7 @@ public class BoardWriteProCommandController extends AbstractCommandController {
 				
 		return new ModelAndView("redirect:board_list.do");
 	}
+
 
 }
 

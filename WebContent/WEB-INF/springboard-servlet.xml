@@ -59,6 +59,44 @@
 		<property name="commandClass" value="board.dto.BoardDBBean" />
 		<property name="commandName" value="boardDTO"/>
 	</bean>
+	
+	<bean id="memberDAO" class="member.dao.MemberDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate"/>
+	</bean>
+	
+	<bean id="/member_main.do" class="member.controller.MemberMainController">
+	</bean>
+	
+	<bean name="/list_member.do" class="member.controller.MemberListController">
+		<property name="memberDAO" ref="memberDAO" /> 
+	</bean>
+	
+	<bean name="/check_member.do" class="member.controller.MemberCheckController">
+	</bean>
+	
+	<bean name="/checkOk_member.do" class="member.controller.MemberCheckOkController">
+			<property name="memberDAO" ref="memberDAO" /> 
+	</bean>
+	
+	<bean name="/join_member.do" class="member.controller.MemberJoinFormController">
+	<property name="memberDAO" ref="memberDAO" /> 
+	</bean>
+	
+	<bean name="/joinOk_member.do" class="member.controller.AAAA">
+	<property name="memberDAO" ref="memberDAO" /> 
+	<property name="commandClass" value="member.dto.MemberDBBean" />
+		<property name="commandName" value="memberDTO"/>
+	</bean>
+	
+	<bean name="/delete_member.do" class="board.controller.MemberDeleteProController">
+	<property name="memberDAO" ref="memberDAO" /> 
+	</bean>
+	
+	<bean name="/edit_member.do" class="board.controller.MemberEditFormController">
+	<property name="memberDAO" ref="memberDAO" /> 
+	</bean>
+
+
 </beans>
 
 

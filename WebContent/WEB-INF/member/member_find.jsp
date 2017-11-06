@@ -12,7 +12,7 @@
 	<div align="center">
 		<hr color="green" width="300">
 		<h2>회 원 찾 기</h2>
-		<form name="f" method="post" action="find.member">
+		<form name="f" method="post" action="find_member.do">
 			<select name="search">
 				<option value="id">아이디</option>
 				<option value="name">이름</option>
@@ -47,14 +47,14 @@
 				<td>${list.allHp}</td>
 				<td>${list.joindate }</td>
 				<td>
-				<a href="edit.member?no=${list.no}">수정</a> | 
-				<a href="delete.member?no=${list.no}">삭제</a></td>
+				<a href="edit_member.do?no=${list.no}">수정</a> | 
+				<a href="delete_member.do?no=${list.no}">삭제</a></td>
 			</tr>	
 			</c:forEach>
 		</c:if>
 		</table>
 		<br>
-		<a href="index.member">회원관리페이지로 이동</a>
+		<a href="index_member.do">회원관리페이지로 이동</a>
 	</div>
 </body>
 </html>

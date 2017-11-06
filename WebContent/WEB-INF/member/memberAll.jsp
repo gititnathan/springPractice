@@ -13,7 +13,7 @@
 		<hr color="green" width="300">
 		<h2>회 원 목 록 보 기</h2>
 		<hr color="green" width="300">
-		<table width="100%" class="outline">
+		<table width="100%" class="outline" border="1">
 			<tr>
 				<th class="m3">번호</th>
 				<th class="m3">이름</th>
@@ -36,11 +36,11 @@
 				<td>${list.name }</td>
 				<td>${list.id}</td>
 				<td>${list.email}</td>
-				<td>${list.allHp}</td>
+				<td>${list.hp1} - ${list.hp2} - ${list.hp3}</td>
 				<td>${list.joindate }</td>
 				<td>
-				<a href="edit.member?no=${list.no}">수정</a> | 
-				<a href="delete.member?no=${list.no}">삭제</a></td>
+				<a href="edit_member.do?no=${list.no}">수정</a> | 
+				<a href="delete_member.do?no=${list.no}">삭제</a></td>
 			</tr>	
 			</c:forEach>
 		</c:if>
