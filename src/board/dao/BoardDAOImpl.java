@@ -30,11 +30,8 @@ public class BoardDAOImpl implements BoardDAO {
 			dto.setReadcount(arg0.getInt("readcount"));
 			dto.setContent(arg0.getString("content"));
 			dto.setIp(arg0.getString("ip"));
-			dto.setRe_group(arg0.getInt("re_group"));
 			dto.setRe_step(arg0.getInt("re_step"));
 			dto.setRe_level(arg0.getInt("re_level"));
-			dto.setFilename(arg0.getString("filename"));
-			dto.setFilesize(arg0.getInt("filesize"));
 			return dto;
 		}
 	}
@@ -42,7 +39,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<BoardDBBean> listBoard() {
-		String sql = "select * from spring_board order by re_group desc, re_step asc";
+		String sql = "select * from spring_board order by num desc";
 		List<BoardDBBean> boardList = jdbcTemplate.query(sql, rowMapper);
 		return boardList;
 	}
@@ -61,28 +58,23 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public int insertBoard(BoardDBBean dto) {
-		String sql = null;
-		if(dto.getNum()==0) {
-			sql = "select max(num) from spring_board";
-			int num = jdbcTemplate.queryForInt(sql);
-			System.out.println(dto.getNum() + "= dto.getNum()");
-			dto.setRe_group(num+1);
-			
+		if (dto.getNum()==0) {
+			String sql = "update spring_board set re_step = re_step + 1";
+			jdbcTemplate.update(sql);
 		}else {
-			sql = "update spring_board set re_step = re_step where re_group=? and re_step>?";
-			Object[] values = new Object[] {dto.getRe_group(), dto.getRe_step()};
- 				jdbcTemplate.update(sql, values);
-		}
-		try {
-			sql = "insert into spring_board values(spring_board_seq.nextval, " 
-					+"?,?,?,?,sysdate,0,?,?,?,?,?)";
-			Object[] values = new Object[] {dto.getWriter(), dto.getEmail(), dto.getSubject(),
-					dto.getPasswd(), dto.getContent(), dto.getIp(), dto.getRe_group(), dto.getRe_step(), dto.getRe_level()};
-			int res = jdbcTemplate.update(sql, values);
-			return res;
-		}finally {
-			
-		}
+			String sql = "update spring_board set re_step = re_step + 1 where re_step > ?";
+			jdbcTemplate.update(sql, dto.getRe_step());
+			dto.setRe_step(dto.getRe_step()+1);
+			dto.setRe_level(dto.getRe_level()+1);
+		}		
+		
+		String sql = "insert into spring_board values(spring_board_seq.nextval, " 
+				+"?,?,?,?, sysdate, 0, ?,?,?,?)";
+		Object[] values = new Object[] {dto.getWriter(), dto.getEmail(), dto.getSubject(),
+						dto.getPasswd(), dto.getContent(), dto.getIp(), 
+						dto.getRe_step(), dto.getRe_level()};
+		int res = jdbcTemplate.update(sql, values);
+		return res;
 	}
 
 	@Override

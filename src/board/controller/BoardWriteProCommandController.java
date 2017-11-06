@@ -22,9 +22,10 @@ public class BoardWriteProCommandController extends AbstractCommandController {
 			HttpServletResponse arg1, Object arg2, BindException arg3)
 			throws Exception {
 		BoardDBBean dto = (BoardDBBean)arg2;
+		System.out.println("dto.getNum = " + dto.getNum());
 		dto.setIp(arg0.getRemoteAddr());
-		boardDAO.insertBoard(dto);
-		
+		int res = boardDAO.insertBoard(dto);
+				
 		return new ModelAndView("redirect:board_list.do");
 	}
 

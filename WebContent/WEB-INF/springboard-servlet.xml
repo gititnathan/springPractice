@@ -33,36 +33,42 @@
 	
 	<bean name="/board_writePro.do" class="board.controller.BoardWriteProCommandController">
 		<property name="boardDAO" ref="boardDAO" />
-		<property name="commandClass" value = "board.dto.BoardDBBean"></property>
-		<property name="commandName" value = "boardDTO"/>
+		<property name="commandClass" value="board.dto.BoardDBBean" />
+		<property name="commandName" value="boardDTO"/>
 	</bean>
 	
+	<bean name="/board_deleteForm.do" class="board.controller.BoardDeleteAbstractController">
+		<property name="supportedMethods">
+			<value>GET, POST</value>
+		</property>
+		<property name="requireSession">
+			<value>true</value>
+		</property>
+	</bean>
 	
-
-
-<bean class="board.controller.BoardUpdateFormController" name="/board_updateForm.do">
-<property name="boardDAO" ref="boardDAO"/>
-</bean>
-
-<bean class="board.controller.BoardUpdateProCommandController" name="/board_updatePro.do">
-<property name="boardDAO" ref="boardDAO"/>
-<property name="commandClass" value="board.dto.BoardDBBean"/>
-<property name="commandName" value="boardDTO"/>
-</bean>
-
-<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	<property name="maxUploadSize" value = "30720000"></property>
-</bean>
-
-<bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
-  <constructor-arg>
-    <value>D:/JulySpring02</value>
-  </constructor-arg>
-</bean>
-
-
-
+	<bean name="/board_deletePro.do" class="board.controller.BoardDeleteProController">
+		<property name="boardDAO" ref="boardDAO" />
+	</bean>
+	
+	<bean name="/board_updateForm.do" class="board.controller.BoardUpdateFormController">
+		<property name="boardDAO" ref="boardDAO" />
+	</bean>
+	
+	<bean name="/board_updatePro.do" class="board.controller.BoardUpdateProCommandController">
+		<property name="boardDAO" ref="boardDAO" />
+		<property name="commandClass" value="board.dto.BoardDBBean" />
+		<property name="commandName" value="boardDTO"/>
+	</bean>
 </beans>
+
+
+
+
+
+
+
+
+
 
 
 
