@@ -10,7 +10,6 @@ public class BoardDBBean {
 	private int readcount;
 	private String content;
 	private String ip;
-	private int re_group;
 	private int re_step;
 	private int re_level;
 	private String filename;
@@ -28,12 +27,7 @@ public class BoardDBBean {
 	public void setFilesize(long filesize) {
 		this.filesize = filesize;
 	}
-	public int getRe_group() {
-		return re_group;
-	}
-	public void setRe_group(int re_group) {
-		this.re_group = re_group;
-	}
+
 	public int getRe_step() {
 		return re_step;
 	}

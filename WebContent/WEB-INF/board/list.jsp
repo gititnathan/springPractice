@@ -10,7 +10,7 @@
 	<b>글 목 록</b>
 	<table border="0" width="600">
 		<tr bgcolor="yellow">
-			<td align="right"><a href="board_writeForm.do">글쓰기</a></td>
+			<td align="right"><a href="board_write.do">글쓰기</a></td>
 		</tr>
 	</table>
 		<table border="1" width="600">

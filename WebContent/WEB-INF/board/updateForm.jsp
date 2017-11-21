@@ -33,7 +33,7 @@
 <body>
 
 <div align="center">
-	<form name="f" action="board_updatePro.do" method="post" onsubmit="return check()">
+	<form name="f" action="board_update.do" method="post" onsubmit="return check()">
 	<h3>글수정</h3>
 	<input type="hidden" name="num" value="${getBoard.num}"/>
 	<table border="1" width="500">
@@ -48,6 +48,10 @@
 		<tr>
 			<th bgcolor="yellow" width="20%">Email</th>
 			<td><input type="text" name="email" class="box" size="50" value="${getBoard.email}"></td>
+		</tr>
+		<tr>
+			<th bgcolor="yellow" width="20%">파일명</th>
+			<td><input type="file" name="filename" class="box" size="50"></td>
 		</tr>
 		<tr>
 			<th bgcolor="yellow" width="20%">내 용</th>

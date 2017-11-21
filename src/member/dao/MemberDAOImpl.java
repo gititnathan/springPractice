@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import member.dto.MemberDBBean;
+import member.ibatis.MemberMapper;
 
 
 public class MemberDAOImpl implements MemberDAO{
@@ -40,9 +41,7 @@ private JdbcTemplate jdbcTemplate;
 	
 	@Override
 	public List<MemberDBBean> listMember() {
-		String sql = "select * from spring_member";
-		List<MemberDBBean> memberList = jdbcTemplate.query(sql, rowMapper);
-		return memberList;
+		return MemberMapper.listMember();
 	}
 
 	@Override
@@ -63,19 +62,12 @@ private JdbcTemplate jdbcTemplate;
 
 	@Override
 	public int insertMember(MemberDBBean dto) {
-		String sql = "insert into spring_member values"
-				+ "(member_seq.nextval, ?,?,?,?,?,?,?,?,?,sysdate)";
-		Object[] values = new Object[] {dto.getName(), dto.getId(), dto.getPasswd(), 
-				dto.getSsn1(), dto.getSsn2(), dto.getEmail(),
-				dto.getHp1(), dto.getHp2(), dto.getHp3()};
-		int res = jdbcTemplate.update(sql, values);
-		return res;
+		return MemberMapper.insertMember(dto);
 	}
 
 	@Override
 	public int deleteMember(int no) {
-		String sql = "delete from spring_member where no = ?";
-		return jdbcTemplate.update(sql, no);
+		return MemberMapper.deleteMember(no);
 	}
 
 	@Override

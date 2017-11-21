@@ -33,7 +33,7 @@
 <body>
 
 <div align="center">
-	<form name="f" action="board_writePro.do" method="post" onsubmit="return check()" enctype="multipart/form-data">
+	<form name="f" action="board_write.do" method="post" onsubmit="return check()">
 
 	<input type="hidden" name="num" value="${param.num}"/>
 	<input type="hidden" name="re_group" value="${param.re_group}"/>

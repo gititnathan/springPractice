@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board.ibatis.BoardMapper">
+	
+	<select id="listBoard" resultType="BoardDTO">
+		select * from spring_board order by re_step asc
+	</select>
+  
+	<update id="readcount" parameterType="int">
+		update spring_board set readcount=readcount+1 where num=#{num}
+	</update>  
+	
+	<select id="getBoard" resultType="BoardDTO" parameterType="int">
+		select * from spring_board where num = #{num}
+	</select>
+	
+	<update id="restepCount" parameterType="java.util.HashMap">
+		${sql} <!-- 이거슨 String을 고대로 실행해주는 거다냥. 따라서 String형으로 받은 sql을 실행 -->
+		<!-- 임시테이블을 만들어야 할때 사용하면 유용하다. 테이블을 생성해서 만들었다. -->
+	</update>
+	
+	<insert id="insertBoard" parameterType="BoardDTO">
+		insert into spring_board values(spring_board_seq.nextval, #{writer}, #{email}, #{subject},#{passwd},sysdate,0,#{content},#{ip},#{re_step},#{re_level}) 
+	</insert>
+	
+	<delete id="deleteBoard" parameterType="int">
+	delete from spring_board where num = #{num} 
+	</delete>
+	
+	<update id="updateBoard" parameterType="BoardDTO">
+	update spring_board set writer = #{writer}, email = #{email}, subject = #{subject}, content = #{content} where num = #{num} 
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

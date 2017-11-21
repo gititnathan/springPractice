@@ -8,7 +8,7 @@
 <body>
 <div align="center">
 	<h3>±€ªË¡¶</h3>
-	<form name="f" action="board_deletePro.do" method="post">
+	<form name="f" action="board_delete.do" method="post">
 		<input type="hidden" name="num" value="${param.num}"/>
 		<table border="1" width="300">
 			<tr bgcolor="yellow">

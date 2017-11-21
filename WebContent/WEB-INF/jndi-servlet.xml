@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<!-- 
+		<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+			<property name="driverClassName">
+				<value>oracle.jdbc.driver.OracleDriver</value>
+			</property>
+			<property name="url">
+				<value>jdbc:oracle:thin:@127.0.0.1:1521:xe</value>
+			</property>
+			<property name="username" value="java7"/>
+			<property name="password">
+				<value>java7</value>
+			</property>
+		</bean>
+
+		<bean id="springJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+			<property name="dataSource">
+				<ref bean="dataSource"></ref>
+			</property>
+		</bean>
+
+	<context:annotation-config/>
+	<bean id="boardDAO" class="board.dao.BoardDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate"/>
+	</bean>
+
+	<bean class="board.controller.BoardController">
+		<property name="boardDAO" ref="boardDAO" />
+	</bean>
+ -->
+	<!--  <bean name="/board_list.do" class="board.controller.BoardListController">-->
+	<!--	<property name="boardDAO" ref="boardDAO" />  --> 
+	<!--  </bean> 
+
+	<bean name="/board_content.do" class="board.controller.BoardContentController">
+		<property name="boardDAO" ref="boardDAO" />
+	</bean>
+	-->
+	
+	<!--  <bean name="/board_writeForm.do" class="board.controller.BoardWriteFormController">
+	</bean>
+	
+	<bean name="/board_writePro.do" class="board.controller.BoardWriteProCommandController">
+		<property name="boardDAO" ref="boardDAO" />
+		<property name="commandClass" value="board.dto.BoardDBBean" />
+		<property name="commandName" value="boardDTO"/>
+	</bean>  
+	
+	<bean name="/board_deleteForm.do" class="board.controller.BoardDeleteAbstractController">
+		<property name="supportedMethods">
+			<value>GET, POST</value>
+		</property>
+		<property name="requireSession">
+			<value>true</value>
+		</property>
+	</bean>
+	
+	<bean name="/board_deletePro.do" class="board.controller.BoardDeleteProController">
+		<property name="boardDAO" ref="boardDAO" />
+	</bean> 
+	
+	<bean name="/board_updateForm.do" class="board.controller.BoardUpdateFormController">
+		<property name="boardDAO" ref="boardDAO" />
+	</bean>
+	
+	<bean name="/board_updatePro.do" class="board.controller.BoardUpdateProCommandController">
+		<property name="boardDAO" ref="boardDAO" />
+		<property name="commandClass" value="board.dto.BoardDBBean" />
+		<property name="commandName" value="boardDTO"/>
+	</bean>
+	
+	<bean id="memberDAO" class="member.dao.MemberDAOImpl">
+		<property name="jdbcTemplate" ref="springJdbcTemplate"/>
+	</bean>
+	
+	<bean id="/member_main.do" class="member.controller.MemberMainController">
+	</bean>
+	
+	<bean name="/list_member.do" class="member.controller.MemberListController">
+		<property name="memberDAO" ref="memberDAO" /> 
+	</bean>
+	
+	<bean name="/check_member.do" class="member.controller.MemberCheckController">
+	</bean>
+	
+	<bean name="/checkOk_member.do" class="member.controller.MemberCheckOkController">
+			<property name="memberDAO" ref="memberDAO" /> 
+	</bean>
+	
+	<bean name="/join_member.do" class="member.controller.MemberJoinFormController">
+	<property name="memberDAO" ref="memberDAO" /> 
+	</bean>
+	
+	<bean name="/joinOk_member.do" class="member.controller.AAAA">
+	<property name="memberDAO" ref="memberDAO" /> 
+	<property name="commandClass" value="member.dto.MemberDBBean" />
+		<property name="commandName" value="memberDTO"/>
+	</bean>
+	
+	<bean name="/delete_member.do" class="member.controller.MemberDeleteProController">
+	<property name="memberDAO" ref="memberDAO" /> 
+	</bean>
+	
+	<bean name="/edit_member.do" class="member.controller.MemberEditFormController">
+	<property name="memberDAO" ref="memberDAO" /> 
+	</bean>
+-->
+
+</beans>
+
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap>
+
+  <!-- Use type aliases to avoid typing the full classname every time. -->
+  <typeAlias alias="MemberDTO" type="member.dto.MemberDBBean"/>
+
+  <!-- Result maps describe the mapping between the columns returned
+       from a query, and the class properties.  A result map isn't
+       necessary if the columns (or aliases) match to the properties 
+       exactly. -->
+  <resultMap id="MemberResult" class="MemberDTO">
+    <result property="no" column="no"/>
+    <result property="name" column="name"/>
+     <result property="id" column="id"/>
+      <result property="passwd" column="passwd"/>
+       <result property="ssn1" column="ssn1"/>
+        <result property="ssn2" column="ssn2"/>
+         <result property="email" column="email"/>
+          <result property="hp1" column="hp1"/>
+           <result property="no" column="no"/>
+            <result property="no" column="no"/>
+  </resultMap>
+
+  <!-- Select with no parameters using the result map for Account class. -->
+  <select id="listMember" resultMap="MemberResult">
+    select * from spring_member
+  </select>
+  <!-- A simpler select example without the result map. Note the aliases to match the properties of the target result class. -->
+	<select id="checkMember" resultClass="MemberDTO" parameterClass="java.lang.String"> 
+	 select * from spring_member where ssn1=#ssn1# and ssn2=#ssn2#
+	</select>
+	
+	<!-- Insert example, using the Account parameter class -->
+	<insert id="insertMember" parameterClass="MemberDTO"> 
+	insert into spring_member values"
+				+ "(member_seq.nextval, #name#,#id#,#passwd#,#ssn1#,#ssn2#,#email#,#hp1#,#hp2#,#hp3#,sysdate) 
+	</insert>
+	
+	<delete id="deleteMember" parameterClass="int"> 
+	delete from spring_member where no = #no# 
+	</delete>
+	<!-- Update example, using the Account parameter class -->
+
+
+	<update id="updateMember" parameterClass="MemberDTO"> 
+		update spring_member set writer = #writer#, email = #email#, subject = #subject#, content = #content# where num = #num# 
+	</update>
+
+</sqlMap>
